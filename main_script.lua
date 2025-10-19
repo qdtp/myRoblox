@@ -1,3 +1,4 @@
+-- 飞行按钮所在的新标签页
 local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/DozeIsOkLol/UILibarySource/refs/heads/main/Orion'))()
 
 -- 启动通知
@@ -198,7 +199,7 @@ local function SetAnimationSpeed(speed)
 end
 
 -- 创建动画倍速按钮
-local speeds = {1, 5, 10}  -- 定义倍速列表
+local speeds = {1, 5, 10} -- 定义倍速列表
 for _, speed in ipairs(speeds) do
     ScriptTab:AddButton({
         Name = '动画倍数' .. speed,
@@ -208,6 +209,21 @@ for _, speed in ipairs(speeds) do
         end,
     })
 end
+
+-- 新增第三个标签：缝合脚本列表
+local StitchTab = Window:MakeTab({
+    Name = '缝合脚本列表',
+    Icon = 'rbxassetid://4483345998',
+    PremiumOnly = false,
+})
+
+-- 在“缝合脚本列表”里加一个【飞行】按钮
+StitchTab:AddButton({
+    Name = '飞行',
+    Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/QnBuB3iq"))()
+    end,
+})
 
 -- 初始化UI
 OrionLib:Init()
