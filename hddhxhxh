@@ -1,5 +1,5 @@
 --== CONFIGURATION ==--
-local ownerKey = "258369147re" -- 所有者密钥
+local ownerKey = "159951234678eee" -- 所有者密钥
 local linkKeyURL = "https://qm.qq.com/q/agf5wFZaA8" -- QQ群链接
 local scriptURL = "https://raw.githubusercontent.com/qdtp/myRoblox/main/main_script.lua" -- 主脚本链接
 local failSoundId   = "rbxassetid://1841061113" -- 错误音效
