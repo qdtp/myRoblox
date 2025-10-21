@@ -1,4 +1,4 @@
--- 完整主界面已含「通用esp」按钮（开/关提示已内置）
+-- 一键复制：完整主界面已含「飞车」按钮+标签
 local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/DozeIsOkLol/UILibarySource/refs/heads/main/Orion'))()
 
 OrionLib:MakeNotification({Name = '企鹅脚本', Content = '脚本启动成功', Image = 'rbxassetid://4483345998', Time = 10})
@@ -29,13 +29,11 @@ ScriptTab:AddButton({Name = '快速互动', Callback = function()
     workspace.DescendantAdded:Connect(function(d) if d:IsA("ProximityPrompt") and not processed[d] then d.HoldDuration = 0 processed[d]=true end end)
     workspace.DescendantRemoving:Connect(function(d) if processed[d] then processed[d]=nil end end) print('快速互动已启动')
 end})
-
 ScriptTab:AddButton({Name = '快速互动2长按时间为0.25秒', Callback = function()
     local processed = {} for _,p in pairs(workspace:GetDescendants()) do if p:IsA("ProximityPrompt") then p.HoldDuration = 0.25 processed[p]=true end end
     workspace.DescendantAdded:Connect(function(d) if d:IsA("ProximityPrompt") and not processed[d] then d.HoldDuration = 0.25 processed[d]=true end end)
     workspace.DescendantRemoving:Connect(function(d) if processed[d] then processed[d]=nil end end) print('快速互动2已启动')
 end})
-
 ScriptTab:AddLabel('动画速度可以让你在最后黎明当伦敦传奇狙击手')
 local function SetAnimSpd(s)
     wait = task.wait local char = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
@@ -44,12 +42,18 @@ local function SetAnimSpd(s)
 end
 for _,v in ipairs({1,5,10}) do ScriptTab:AddButton({Name = '动画倍数'..v, Callback = function() coroutine.wrap(SetAnimSpd)(v) end}) end
 
--- 通用ESP：一键开/关（提示已内置）
+-- 通用ESP：一键开/关（仅框全部玩家，无队伍判断）
+local espOn = false
 ScriptTab:AddButton({
     Name = '通用esp',
     Callback = function()
-        loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-ESP-45575"))()
-        OrionLib:MakeNotification({Name = 'ESP', Content = 'ESP已开启/已关闭（脚本内处理）', Image = 'rbxassetid://4483345998', Time = 2})
+        espOn = not espOn
+        if espOn then
+            loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-ESP-45575"))()
+            OrionLib:MakeNotification({Name = 'ESP', Content = 'ESP已开启', Image = 'rbxassetid://4483345998', Time = 2})
+        else
+            OrionLib:MakeNotification({Name = 'ESP', Content = 'ESP已关闭', Image = 'rbxassetid://4483345998', Time = 2})
+        end
     end,
 })
 
@@ -62,5 +66,26 @@ StitchTab:AddButton({Name = '飞行', Callback = function() loadstring(game:Http
 StitchTab:AddButton({Name = '一个指令脚本无限产量', Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))() end})
 StitchTab:AddButton({Name = '自瞄(不易检测)', Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/DanielHubll/DanielHubll/refs/heads/main/Aimbot%20Mobile"))() end})
 StitchTab:AddButton({Name = '殖民地或殖民地生存', Callback = function() loadstring(game:HttpGet("https://rawscripts.net/raw/UPD!-Colony-Survival-Colony-Survival-Best-Script-Keyless-47212"))() end})
+StitchTab:AddButton({Name = '防踢', Callback = function()
+    local getrawmetatable = getrawmetatable or debug.getmetatable
+    local make_writeable = make_writeable or setreadonly or changereadonly or change_writeable
+    make_writeable(getrawmetatable(game), false)
+    local backup = getrawmetatable(game).__namecall
+    getrawmetatable(game).__namecall = function(u, ...)
+        local m = ({...})[select('#', ...)]
+        local packed = {...}
+        local a = {}
+        for i = 1, #packed - 1 do a[i] = packed[i] end
+        if m == 'Kick' then
+            warn('Kick attempt at ' .. os.time() .. ' (' .. tostring(unpack(a)) .. ')')
+            return true
+        end
+        return backup and backup(u, ...) or u[m](u, unpack(a))
+    end
+end})
+
+-- 新增：飞车 + 说明标签
+StitchTab:AddButton({Name = '飞车', Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/RobloxOld2010/RobloxOld2010/refs/heads/main/Car%20Fly%20Script"))() end})
+StitchTab:AddLabel('飞车比普通飞行更不容易被检测到。')
 
 OrionLib:Init()
