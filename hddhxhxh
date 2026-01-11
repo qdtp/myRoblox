@@ -1,5 +1,5 @@
 --== CONFIGURATION ==--
-local ownerKey = "回归" -- 所有者密钥
+local ownerKey = "我这钥匙也没有问题呀😡你什么意思" -- 所有者密钥
 local linkKeyURL = "https://raw.githubusercontent.com/qdtp/myRoblox/refs/heads/main/gyhhvg" -- QQ群链接
 local scriptURL = "https://raw.githubusercontent.com/qdtp/myRoblox/main/main_script.lua" -- 主脚本链接
 local failSoundId   = "rbxassetid://1841061113" -- 错误音效
