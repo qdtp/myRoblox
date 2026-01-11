@@ -1,3 +1,5 @@
+你居然看到这了😭请不要盗走本脚本😭本脚本只是AI写的自己用😭请停止盗窃行为😭
+
 -- 一键复制：完整主界面已含「飞车」按钮+标签
 local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/DozeIsOkLol/UILibarySource/refs/heads/main/Orion'))()
 
@@ -18,11 +20,13 @@ Section:AddButton({Name = '销毁UI', Callback = function() OrionLib:Destroy() e
 
 -- ===== 标签2：脚本通用功能 =====
 local ScriptTab = Window:MakeTab({Name = '脚本通用功能', Icon = 'rbxassetid://4483345998', PremiumOnly = false})
-ScriptTab:AddLabel('本脚本主打不易检测，安全，通用')
-ScriptTab:AddLabel('规则1: 如果你因为使用本脚本功能导致某个服务器或者账号被封与我们没有关系，不给赔偿。')
+ScriptTab:AddLabel('欢迎使用本脚本')
+ScriptTab:AddLabel('规则1: 你封号与我无关')
 ScriptTab:AddLabel('规则2: 使用脚本不要当恶俗。')
-ScriptTab:AddLabel('规则3: 本脚本只限于群内人使用。')
+ScriptTab:AddLabel('规则3: 切勿当恶俗')
 ScriptTab:AddLabel('规则4: 使用本脚本默认同意规则。')
+ScriptTab:AddLabel('🤓如果你有散装的脚本可以投稿给我们我会给你创一个专页')
+ScriptTab:AddLabel('如果你想投稿请前往QQ965259980')
 
 ScriptTab:AddButton({Name = '快速互动', Callback = function()
     local processed = {} for _,p in pairs(workspace:GetDescendants()) do if p:IsA("ProximityPrompt") then p.HoldDuration = 0 processed[p]=true end end
