@@ -1,5 +1,3 @@
-你居然看到这了😭请不要盗走本脚本😭本脚本只是AI写的自己用😭请停止盗窃行为😭
-
 -- 一键复制：完整主界面已含「飞车」按钮+标签
 local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/DozeIsOkLol/UILibarySource/refs/heads/main/Orion'))()
 
@@ -91,5 +89,10 @@ end})
 -- 新增：飞车 + 说明标签
 StitchTab:AddButton({Name = '飞车', Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/RobloxOld2010/RobloxOld2010/refs/heads/main/Car%20Fly%20Script"))() end})
 StitchTab:AddLabel('飞车比普通飞行更不容易被检测到。')
+
+-- 新增：NPC相关功能
+StitchTab:AddButton({Name = '杀死与控制NPC', Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/sergeevilya009-gif/What_are_you_looking_at/main/go_away"))() end})
+StitchTab:AddButton({Name = '控制NPC V2', Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/randomstring0/Qwerty/refs/heads/main/qwerty38.lua"))() end})
+StitchTab:AddButton({Name = '自动翻译脚本', Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/ke9460394-dot/ugik/refs/heads/main/KENNY自动汉化.txt"))() end})
 
 OrionLib:Init()
